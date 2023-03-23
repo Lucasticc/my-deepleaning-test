@@ -9,7 +9,7 @@ import os
 # 首先 深度学习在gpu中运行 首先就是要模型（model）和损失函数(loss_function)和数据(data)放到gpu中运行 .cuda()
 # 在我们重写我们的数据加载类的时候首先需要将数据放到cuda中然后再返回
 # 在验证集和训练集中 我们 for循环每一个peach 都需要将其中的数据放到gpu中 (好像不需要这样)只要在 我们的数据加载类中将数据放入到gpu中每次加载数据的时候就都没有问题了
-#创建默认的CPU设备
+#创建默认的CPU设备.
 # device = torch.device("cpu")
 #如果GPU设备可用，将默认设备改为GPU
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
