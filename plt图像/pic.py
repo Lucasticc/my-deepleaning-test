@@ -1,8 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 #解决中文显示问题 ..未解决
-plt.rcParams["font.family"] = ["sans-serif"]
-plt.rcParams["font.sans-serif"] = ['SimHei']
+# plt.rcParams["font.family"] = ["sans-serif"]
+# plt.rcParams["font.sans-serif"] = ['SimHei']
 
 # 读取存储为txt文件的数据
 def data_read(dir_path):
