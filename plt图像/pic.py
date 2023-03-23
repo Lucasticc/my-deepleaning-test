@@ -1,6 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
+#解决中文显示问题 ..未解决
+plt.rcParams["font.family"] = ["sans-serif"]
+plt.rcParams["font.sans-serif"] = ['SimHei']
 
 # 读取存储为txt文件的数据
 def data_read(dir_path):
@@ -45,5 +47,6 @@ if __name__ == "__main__":
     # plt.plot(x_train_acc, y_train_acc,  color='red', linestyle="solid", label="train accuracy")
     plt.legend()
 
-    plt.title('Accuracy curve')
+    # plt.title("损失函数的值", fontproperties="SimHei") 。。还是现实不了中文
+    plt.title('acc')
     plt.show()
