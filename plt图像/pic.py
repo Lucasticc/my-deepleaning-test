@@ -22,8 +22,8 @@ def multiple_equal(x, y):
 
 if __name__ == "__main__":
 
-    train_loss_path = '/Users/lanyiwei/pytest/pic/train_loss.txt'
-    train_acc_path = '/Users/lanyiwei/pytest/pic/train_loss.txt'
+    train_loss_path = 'deep leaning /plt图像/train_loss.txt'
+    train_acc_path = 'deep leaning /plt图像/train_acc.txt'
 
     y_train_loss = data_read(train_loss_path)
     y_train_acc = data_read(train_acc_path)
