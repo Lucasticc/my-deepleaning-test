@@ -3,7 +3,7 @@ import pandas as pd
 
 def image_emotion_mapping(path):
     # 读取emotion文件
-    df_emotion = pd.read_csv('dataset/emotion.csv', header = None)
+    df_emotion = pd.read_csv('/Users/lanyiwei/data/emotion.csv', header = None)
     # 查看该文件夹下所有文件
     files_dir = os.listdir(path)
     # 用于存放图片名
@@ -24,13 +24,13 @@ def image_emotion_mapping(path):
     df = pd.DataFrame()
     df['path'] = path_s
     df['emotion'] = emotion_s
-    df.to_csv(path+'\\image_emotion.csv', index=False, header=False)
+    df.to_csv(path+'//image_emotion.csv', index=False, header=False)
 
 
 def main():
     # 指定文件夹路径
-    train_set_path = 'face_images/train_set'
-    verify_set_path = 'face_images/verify_set'
+    train_set_path = '/Users/lanyiwei/data/test_set'
+    verify_set_path = '/Users/lanyiwei/data/verify_set'
     image_emotion_mapping(train_set_path)
     image_emotion_mapping(verify_set_path)
 

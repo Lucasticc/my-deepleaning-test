@@ -2,9 +2,9 @@ import cv2
 import numpy as np
 
 # 指定存放图片的路径
-path = 'face_images'
+path = '/Users/lanyiwei/data/pic'
 # 读取像素数据
-data = np.loadtxt('dataset/pixels.csv')
+data = np.loadtxt('/Users/lanyiwei/data/pixels.csv')
 
 # 按行取数据
 for i in range(data.shape[0]):
