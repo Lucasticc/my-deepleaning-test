@@ -116,7 +116,8 @@ class FaceCNN(nn.Module):
             # input:(bitch_size, 1, 48, 48), output:(bitch_size, 64, 48, 48), (48-3+2*1)/1+1 = 48
             nn.Conv2d(in_channels=1, out_channels=64, kernel_size=3, stride=1, padding=1), # 卷积层
             nn.BatchNorm2d(num_features=64), # 归一化
-            nn.RReLU(inplace=True), # 激活函数
+            # nn.RReLU(inplace=True), # 激活函数
+            nn.Sigmoid(), # 激活函数
             # output(bitch_size, 64, 24, 24)
             nn.MaxPool2d(kernel_size=2, stride=2), # 最大值池化
         )
@@ -200,7 +201,8 @@ def train(train_dataset, val_dataset, batch_size, epochs, learning_rate, wt_deca
         # scheduler.step() # 学习率衰减
         model.train()# 模型训练
         for images, emotion in train_loader:
-            # 梯度清零
+            # 梯度清零 
+            # if epoch % 2 ==0:
             optimizer.zero_grad()
             # images.cuda()
             # emotion.cuda()
