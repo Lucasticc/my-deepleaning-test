@@ -183,7 +183,7 @@ def train(train_dataset, val_dataset, batch_size, epochs, learning_rate, wt_deca
     if os.path.exists('/Users/lanyiwei/data/model/0.pth'):
         print('-------------load the model-----------------')
         # model.load_state_dict(torch.load(r'Z:\torch test\data\finnal\model\10.pth'))
-        model = torch.load(checkpoint_save_path+'/0.pth')
+        model = torch.load(checkpoint_save_path+'/F.pth')
         # model.eval()    # 模型推理时设置
    #如果模型之前训练过，就加载之前的模型继续训练
     # model.cuda()
@@ -219,17 +219,18 @@ def train(train_dataset, val_dataset, batch_size, epochs, learning_rate, wt_deca
 
         print('After {} epochs , the loss_rate is : '.format(epoch+1), loss_rate.item())
         train_loss.append(loss_rate.item())
-        if epoch % 5 == 0:
-            model.eval() # 模型评估
-            acc_train = validate(model, train_dataset, batch_size)
-            acc_val = validate(model, val_dataset, batch_size)
-            print('After {} epochs , the acc_train is : '.format(epoch+1), acc_train)
-            print('After {} epochs , the acc_val is : '.format(epoch+1), acc_val)
-            train_acc.append(acc_train) 
-            acc_vall.append(acc_val)
-            
-        if epoch % 10 == 0:
-            path = '/Users/lanyiwei/data/model'+'/'+ str(epoch) +'.pth'
+        model.eval() # 模型评估
+        # if epoch %5 == 0:
+        # 每跑一轮 都把测试集正确率打印出来看看
+        acc_train = validate(model, train_dataset, batch_size)
+        acc_val = validate(model, val_dataset, batch_size)
+        print('After {} epochs , the acc_train is : '.format(epoch+1), acc_train)
+        print('After {} epochs , the acc_val is : '.format(epoch+1), acc_val)
+        train_acc.append(acc_train) 
+        acc_vall.append(acc_val)
+        #每两轮保存一下模型    
+        if epoch % 2 == 0:
+            path = '/Users/lanyiwei/data/model'+'/'+ str(epoch)+'t' +'.pth'
             torch.save(model,path)
     # with open("r'Z:\torch test\data\finnal\model'\train_loss.txt'", 'w') as train_loss:
     #     train_los.write(str(train_loss))
@@ -238,9 +239,9 @@ def train(train_dataset, val_dataset, batch_size, epochs, learning_rate, wt_deca
     # with open("r'Z:\torch test\data\finnal\model'\acc_vall.txt'", 'w') as acc_vall:
     #     acc_vall.write(str(acc_vall))
     path1 = '/Users/lanyiwei/data/savedata'
-    np.savetxt(path1+'/train_loss.txt', train_loss, fmt = '%f', delimiter = ',')
-    np.savetxt(path1+'/train_acc.txt', train_acc, fmt = '%f', delimiter = ',')
-    np.savetxt(path1+'/acc_vall.txt', acc_vall, fmt = '%f', delimiter = ',')
+    np.savetxt(path1+'/train_lossnew.txt', train_loss, fmt = '%f', delimiter = ',')
+    np.savetxt(path1+'/train_accnew.txt', train_acc, fmt = '%f', delimiter = ',')
+    np.savetxt(path1+'/acc_vallnew.txt', acc_vall, fmt = '%f', delimiter = ',')
     return model
 
 def main():
@@ -250,9 +251,9 @@ def main():
     train_dataset = FaceDataset(root= train_set)
     val_dataset = FaceDataset(root =verify_set)
     # 超参数可自行指定
-    model = train(train_dataset, val_dataset, batch_size=128, epochs=20, learning_rate=0.1, wt_decay=0)
+    model = train(train_dataset, val_dataset, batch_size=128, epochs=20, learning_rate=0.001, wt_decay=0)
     # 保存模型
-    torch.save(model, '/Users/lanyiwei/data/model')
+    torch.save(model, '/Users/lanyiwei/data/model/F.pth')
     # model 是保存模型 model.state_dict() 是保存数据
 
 if __name__ == '__main__':

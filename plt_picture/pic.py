@@ -26,12 +26,15 @@ if __name__ == "__main__":
 
     train_loss_path = '/Users/lanyiwei/pytest/my-deepleaning-test/plt_picture/train_loss.txt'
     train_acc_path = '/Users/lanyiwei/pytest/my-deepleaning-test/plt_picture/train_acc.txt'
+    val_acc_path = '/Users/lanyiwei/pytest/my-deepleaning-test/plt_picture/acc_vall.txt'
 
     y_train_loss = data_read(train_loss_path)
     y_train_acc = data_read(train_acc_path)
+    y_acc_vall = data_read(val_acc_path)
 
     x_train_loss = range(len(y_train_loss))
     x_train_acc = multiple_equal(x_train_loss, range(len(y_train_acc)))
+    x_vall_acc = multiple_equal(x_train_loss, range(len(y_acc_vall)))
     # figure 可以指定生成图像的长宽高 图像的编号 背景颜色 和边框颜色
     plt.figure(figsize=(9,6),facecolor='white')
 
@@ -45,6 +48,7 @@ if __name__ == "__main__":
 
     plt.plot(x_train_loss, y_train_loss, linewidth=1, linestyle="solid", label="train loss")
     plt.plot(x_train_acc, y_train_acc,  color='red', linestyle="solid", label="train accuracy")
+    plt.plot(x_train_acc, y_acc_vall,  color='black', linestyle="solid", label="vall accuracy")
     plt.legend()
 
     # plt.title("损失函数的值", fontproperties="SimHei") 。。还是现实不了中文
