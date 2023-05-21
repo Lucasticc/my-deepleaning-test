@@ -24,8 +24,10 @@ def multiple_equal(x, y):
 
 if __name__ == "__main__":
 
-    train_loss_path = 'deep leaning /plt图像/train_loss.txt'
-    train_acc_path = 'deep leaning /plt图像/train_acc.txt'
+    train_loss_path = '/Users/lanyiwei/data/savedata/train_loss.txt'
+    train_acc_path = '/Users/lanyiwei//data/savedata/train_acc.txt'
+    # train_loss_path = '/Users/lanyiwei/pytest/my-deepleaning-test/plt图像/train_loss.txt'
+    # train_acc_path = '/Users/lanyiwei/pytest/my-deepleaning-test/plt图像/train_acc.txt'
 
     y_train_loss = data_read(train_loss_path)
     y_train_acc = data_read(train_acc_path)
@@ -44,7 +46,7 @@ if __name__ == "__main__":
     plt.ylabel('accuracy')
 
     plt.plot(x_train_loss, y_train_loss, linewidth=1, linestyle="solid", label="train loss")
-    # plt.plot(x_train_acc, y_train_acc,  color='red', linestyle="solid", label="train accuracy")
+    plt.plot(x_train_acc, y_train_acc,  color='red', linestyle="solid", label="train accuracy")
     plt.legend()
 
     # plt.title("损失函数的值", fontproperties="SimHei") 。。还是现实不了中文
