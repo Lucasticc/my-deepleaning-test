@@ -49,7 +49,7 @@ if __name__ == "__main__":
     plt.ylabel('accuracy')
 
     plt.plot(x_train_loss, y_train_loss, linewidth=1, linestyle="solid", label="train loss")
-    # plt.plot(x_train_acc, y_train_acc,  color='red', linestyle="solid", label="train accuracy")
+    plt.plot(x_train_acc, y_train_acc,  color='red', linestyle="solid", label="train accuracy")
     plt.legend()
 
     # plt.title("损失函数的值", fontproperties="SimHei") 。。还是现实不了中文
