@@ -1,4 +1,6 @@
 import numpy as np
+import matplotlib
+import matplotlib; matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
 #解决中文显示问题 ..未解决
 # plt.rcParams["font.family"] = ["sans-serif"]
@@ -8,7 +10,7 @@ import matplotlib.pyplot as plt
 def data_read(dir_path):
     with open(dir_path, "r") as f:
         raw_data = f.read()
-        data = raw_data[1:-1].split(", ")
+        data = raw_data[1:-1].split(',')
 
     return np.asfarray(data, float)
 
@@ -24,8 +26,11 @@ def multiple_equal(x, y):
 
 if __name__ == "__main__":
 
-    train_loss_path = 'deep leaning /plt图像/train_loss.txt'
-    train_acc_path = 'deep leaning /plt图像/train_acc.txt'
+    # train_loss_path = 'deep leaning /plt图像/train_loss.txt'
+    # train_acc_path = 'deep leaning /plt图像/train_acc.txt'
+    train_loss_path=r'Z:\data\savedata\train_loss.txt'
+    train_acc_path=r'Z:\data\savedata\train_acc.txt'
+
 
     y_train_loss = data_read(train_loss_path)
     y_train_acc = data_read(train_acc_path)
@@ -49,4 +54,5 @@ if __name__ == "__main__":
 
     # plt.title("损失函数的值", fontproperties="SimHei") 。。还是现实不了中文
     plt.title('acc')
+    print(matplotlib.get_backend())
     plt.show()
